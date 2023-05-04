@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Age Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #d4ffd4;
+      }
+      
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+      
+      form {
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      label {
+        font-weight: bold;
+      }
+      
+      input {
+        font-size: 16px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      
+      button {
+        font-size: 16px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+      
+      button:hover {
+        background-color: #3e8e41;
+      }
+      
+      p {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 18px;
+        font-weight: bold;
+        display: none; /* hide the element by default */
+      }
+      
+      #ageYears,#ageMonths, #ageDays {
+        color: #4CAF50;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Age Calculator</h1>
+    <form>
+      <label for="birthdate">Enter your birthdate:</label>
+      <br>
+      <input type="date" id="birthdate">
+      <br><br>
+      <button type="button" onclick="calculateAge()">Calculate</button>
+    </form>
+    <p id="result">Your age is: <span id="ageYears"></span> years, <span id="ageMonths"></span> months, and <span id="ageDays"></span> days</p>
+    
+    <script>
+      function calculateAge() {
+        var birthdate = new Date(document.getElementById("birthdate").value);
+        var today = new Date();
+        var ageInMilliseconds = today - birthdate;
+        var ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+        var ageInMonths = ageInYears * 12;
+        var ageInDays = ageInMilliseconds / (1000 * 60 * 60 * 24);
+        
+        document.getElementById("ageYears").innerHTML = Math.floor(ageInYears);
+        document.getElementById("ageMonths").innerHTML = Math.floor(ageInMonths);
+        document.getElementById("ageDays").innerHTML = Math.floor(ageInDays);
+        document.getElementById("result").style.display = "block"; // show the element after calculation
+      }
+    </script>
+  </body>
+</html>
